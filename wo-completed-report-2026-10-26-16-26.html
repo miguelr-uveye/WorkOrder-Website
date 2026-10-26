@@ -1,0 +1,563 @@
+<!doctype html><html><head><meta charset="utf-8"><title>WO Completed Report — 10/26/2026, 12:26:23 PM</title><style>@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #f3f4f6;
+    --surface: #ffffff;
+    --surface-2: #eceef1;
+    --border: #dde1e7;
+    --border-soft: #e7e9ed;
+    --text: #14171c;
+    --text-dim: #5a6472;
+    --text-faint: #88909a;
+    --accent: #cf4a15;
+    --accent-strong: #b33e10;
+    --accent-soft: #fde7db;
+    --critical: #c0392b;
+    --critical-soft: #fbe1dd;
+    --warning: #a3630a;
+    --warning-soft: #fbeed8;
+    --good: #1f7a4d;
+    --good-soft: #dff3e8;
+    --info: #1d6fa5;
+    --info-soft: #dcedf8;
+    --shadow: 0 1px 2px rgba(20,23,28,0.04), 0 8px 24px -12px rgba(20,23,28,0.12);
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0c0f;
+      --surface: #14171c;
+      --surface-2: #1b1f26;
+      --border: #262b33;
+      --border-soft: #20242b;
+      --text: #e9ebee;
+      --text-dim: #9aa3af;
+      --text-faint: #6b7280;
+      --accent: #ff7a3d;
+      --accent-strong: #ff9463;
+      --accent-soft: rgba(255,122,61,0.14);
+      --critical: #f2685a;
+      --critical-soft: rgba(242,104,90,0.14);
+      --warning: #f0ad4e;
+      --warning-soft: rgba(240,173,78,0.14);
+      --good: #4bc98a;
+      --good-soft: rgba(75,201,138,0.14);
+      --info: #52b0e8;
+      --info-soft: rgba(82,176,232,0.14);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -16px rgba(0,0,0,0.6);
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0a0c0f;
+    --surface: #14171c;
+    --surface-2: #1b1f26;
+    --border: #262b33;
+    --border-soft: #20242b;
+    --text: #e9ebee;
+    --text-dim: #9aa3af;
+    --text-faint: #6b7280;
+    --accent: #ff7a3d;
+    --accent-strong: #ff9463;
+    --accent-soft: rgba(255,122,61,0.14);
+    --critical: #f2685a;
+    --critical-soft: rgba(242,104,90,0.14);
+    --warning: #f0ad4e;
+    --warning-soft: rgba(240,173,78,0.14);
+    --good: #4bc98a;
+    --good-soft: rgba(75,201,138,0.14);
+    --info: #52b0e8;
+    --info-soft: rgba(82,176,232,0.14);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -16px rgba(0,0,0,0.6);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  .num { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  .wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 28px 28px 64px;
+  }
+
+  /* ---------- Header ---------- */
+  header.top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .eyebrow-sep { color: var(--text-faint); font-size: 11px; }
+  .eyebrow-sub { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+
+  h1 {
+    font-family: "Archivo", ui-sans-serif, sans-serif;
+    font-weight: 800;
+    font-size: 34px;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px 0;
+    text-wrap: balance;
+  }
+
+  .subhead { color: var(--text-dim); font-size: 14px; max-width: 62ch; line-height: 1.5; }
+
+  .status-cluster { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; flex-shrink: 0; }
+
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px 6px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    box-shadow: var(--shadow);
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-faint); flex-shrink: 0; }
+  .live-pill.is-live .dot { background: var(--good); box-shadow: 0 0 0 0 var(--good); animation: pulse 2s infinite; }
+  .live-pill.is-live { color: var(--good); border-color: var(--good-soft); }
+  .live-pill.is-error .dot { background: var(--critical); }
+  .live-pill.is-error { color: var(--critical); border-color: var(--critical-soft); }
+  .live-pill.is-loading .dot { background: var(--warning); animation: blink 1s infinite; }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--good) 55%, transparent); }
+    70% { box-shadow: 0 0 0 6px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  @keyframes blink { 50% { opacity: 0.35; } }
+  @media (prefers-reduced-motion: reduce) {
+    .live-pill.is-live .dot, .live-pill.is-loading .dot { animation: none; }
+  }
+
+  .refresh-row { display: flex; align-items: center; gap: 10px; }
+  .updated-text { font-size: 11px; color: var(--text-faint); font-family: "IBM Plex Mono", monospace; }
+  button.refresh-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    font-family: "IBM Plex Sans", sans-serif; font-size: 12px; font-weight: 500;
+    padding: 6px 11px; border-radius: 7px; cursor: pointer;
+  }
+  button.refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
+  button.refresh-btn:focus-visible, a:focus-visible, .chip:focus-visible, th button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button.refresh-btn svg { width: 13px; height: 13px; }
+  button.refresh-btn.spinning svg { animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- Banner ---------- */
+  .banner {
+    display: none;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+  }
+  .banner.show { display: flex; }
+  .banner.warn { background: var(--warning-soft); border-color: color-mix(in srgb, var(--warning) 35%, transparent); color: var(--warning); }
+  .banner.err { background: var(--critical-soft); border-color: color-mix(in srgb, var(--critical) 35%, transparent); color: var(--critical); }
+  .banner.info { background: var(--info-soft); border-color: color-mix(in srgb, var(--info) 35%, transparent); color: var(--info); }
+  .banner strong { color: var(--text); }
+  .banner .msg { color: var(--text-dim); }
+  .banner.warn .msg, .banner.err .msg, .banner.info .msg { color: inherit; opacity: 0.85; }
+
+  /* ---------- KPI strip ---------- */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 16px;
+    box-shadow: var(--shadow);
+    min-width: 0;
+  }
+  .kpi .label { font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; margin-bottom: 9px; }
+  .kpi .value { font-size: 25px; font-weight: 600; line-height: 1; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .kpi .value.critical { color: var(--critical); }
+  .kpi .value.warning { color: var(--warning); }
+  .kpi .value.info { color: var(--info); }
+  .kpi .value .bucket-num { font-family: "IBM Plex Mono", monospace; }
+  .kpi .value .bucket-num.warn { color: var(--warning); }
+  .kpi .value .bucket-num.crit { color: var(--critical); }
+  .kpi .value .bucket-sep { color: var(--text-faint); margin: 0 4px; font-weight: 400; }
+  .kpi .detail { font-size: 11.5px; color: var(--text-dim); }
+  .kpi .detail .em { color: var(--text); font-weight: 500; }
+
+  /* ---------- Panel shell ---------- */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 20px 22px 22px;
+  }
+  .panel + .panel { margin-top: 16px; }
+  .panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+  .panel-title { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: -0.005em; }
+  .panel-note { font-size: 11.5px; color: var(--text-faint); }
+
+  .main-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 16px; align-items: stretch; }
+
+  /* ---------- Sub-status bars ---------- */
+  .bar-row { display: grid; grid-template-columns: 168px 1fr 44px; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border-soft); }
+  .bar-row:last-child { border-bottom: none; }
+  .bar-label { font-size: 12.5px; font-weight: 500; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bar-track-wrap { position: relative; }
+  .bar-track { position: relative; height: 22px; background: var(--surface-2); border-radius: 5px; overflow: hidden; display: flex; }
+  .bar-seg { height: 100%; }
+  .bar-seg.b1 { background: var(--warning); }
+  .bar-seg.b2 { background: var(--critical); }
+  .bar-seg-label {
+    position: absolute; top: 50%; transform: translate(-50%, -50%);
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 700;
+    color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.55), 0 0 4px rgba(0,0,0,0.35);
+    pointer-events: none; white-space: nowrap; line-height: 1;
+  }
+  .bar-total { font-size: 12.5px; text-align: right; color: var(--text-dim); }
+  .bar-total .n { color: var(--text); font-weight: 600; }
+  .bar-row.bar-header { padding: 0 0 7px; }
+  .bar-row.bar-header .bar-total {
+    font-family: "IBM Plex Sans", sans-serif; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+    font-weight: 600; color: var(--text-faint) !important;
+  }
+
+  .sa-filter-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .sa-filter-label { font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-weight: 600; flex-shrink: 0; }
+
+  .legend { display: flex; gap: 16px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-soft); flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-dim); }
+  .legend-swatch { width: 9px; height: 9px; border-radius: 2px; }
+
+  /* ---------- side panels ---------- */
+  .side-stack { display: flex; flex-direction: column; gap: 16px; }
+  .mini-bars { display: flex; flex-direction: column; gap: 10px; }
+  .mini-row { display: grid; grid-template-columns: 78px 1fr 56px; align-items: center; gap: 10px; }
+  .mini-label { font-size: 12px; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mini-track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; display: flex; }
+  .mini-fill { height: 100%; }
+  .mini-fill.mf-mid { background: var(--warning); }
+  .mini-fill.mf-high { background: var(--critical); }
+  .mini-fill.mf-part { background: var(--accent); }
+  .holdup-disclaimer { font-size: 10.5px; color: var(--text-faint); line-height: 1.45; margin: -4px 0 12px; }
+  .mini-val { font-size: 12px; text-align: right; color: var(--text); font-weight: 600; font-family: "IBM Plex Mono", monospace; white-space: nowrap; }
+  .mini-split { display: block; font-size: 10px; font-weight: 400; color: var(--text-faint); letter-spacing: 0.01em; }
+
+  .attention-list { display: flex; flex-direction: column; gap: 0; }
+  .attn-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-soft);
+    border-left: 3px solid var(--critical);
+    padding-left: 10px;
+  }
+  .attn-item:last-child { border-bottom: none; }
+  .attn-account { font-size: 12.5px; font-weight: 600; color: var(--text); }
+  .attn-meta { font-size: 11px; color: var(--text-faint); grid-column: 1 / -1; }
+  .attn-age { font-size: 13px; font-weight: 700; color: var(--critical); text-align: right; white-space: nowrap; }
+  .attn-age .u { font-size: 9.5px; font-weight: 500; color: var(--text-faint); display: block; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* ---------- table controls ---------- */
+  .table-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 180px;
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 7px 11px;
+  }
+  .search-box svg { width: 14px; height: 14px; color: var(--text-faint); flex-shrink: 0; }
+  .search-box input {
+    border: none; background: transparent; outline: none; color: var(--text);
+    font-family: "IBM Plex Sans", sans-serif; font-size: 13px; width: 100%;
+  }
+  .search-box input::placeholder { color: var(--text-faint); }
+
+  .chip-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px; padding: 5px 10px; border-radius: 100px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text-dim); cursor: pointer; white-space: nowrap;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: white; }
+  .chip.chip-orphan { border-color: color-mix(in srgb, var(--warning) 55%, var(--border)); color: var(--warning); background: var(--warning-soft); font-weight: 600; }
+  .chip.chip-orphan:hover { border-color: var(--warning); color: var(--warning); }
+  .chip.chip-orphan.active { background: var(--warning); border-color: var(--warning); color: #fff; }
+  .chip.chip-rnd { border-color: color-mix(in srgb, var(--info) 55%, var(--border)); color: var(--info); background: var(--info-soft); font-weight: 600; }
+  .chip.chip-rnd:hover { border-color: var(--info); color: var(--info); }
+  .chip.chip-rnd.active { background: var(--info); border-color: var(--info); color: #fff; }
+
+  .orphan-note { display: none; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.5; color: var(--warning); background: var(--warning-soft); border: 1px solid color-mix(in srgb, var(--warning) 35%, transparent); border-radius: 8px; padding: 9px 12px; margin-bottom: 12px; }
+  .orphan-note.show { display: flex; }
+
+  .table-scroll { overflow-x: auto; border: 1px solid var(--border-soft); border-radius: 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 1500px; }
+  thead th {
+    position: sticky; top: 0;
+    background: var(--surface-2);
+    text-align: left; padding: 9px 12px;
+    font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-faint);
+    font-weight: 600; border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  th button {
+    background: none; border: none; color: inherit; font: inherit;
+    letter-spacing: inherit; text-transform: inherit; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 4px; padding: 0;
+  }
+  th button:hover { color: var(--text); }
+  th .arrow { opacity: 0; font-size: 9px; }
+  th button.sorted .arrow { opacity: 1; color: var(--accent); }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border-soft); vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--surface-2); }
+  td.account { font-weight: 500; max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  td.age { font-family: "IBM Plex Mono", monospace; font-weight: 600; }
+  td.case-num { color: var(--text-dim); }
+
+  .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 100px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .badge.crit { background: var(--critical-soft); color: var(--critical); }
+  .badge.warn { background: var(--warning-soft); color: var(--warning); }
+  .badge.neutral { background: var(--surface-2); color: var(--text-dim); }
+  .badge.good { background: var(--good-soft); color: var(--good); }
+
+  .empty-row td { text-align: center; color: var(--text-faint); padding: 30px 12px; }
+
+  a.rec-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    color: var(--accent); text-decoration: none; font-weight: 500;
+    border-bottom: 1px solid transparent;
+  }
+  a.rec-link:hover { border-bottom-color: var(--accent); color: var(--accent-strong); }
+  a.rec-link .ext-icon { width: 10px; height: 10px; flex-shrink: 0; opacity: 0.7; }
+  .wo-more { font-size: 10.5px; color: var(--text-faint); font-family: "IBM Plex Mono", monospace; }
+  .dim-dash { color: var(--text-faint); }
+
+  /* ---------- SOINC line-item popover ---------- */
+  .so-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 16px; height: 16px; border-radius: 4px; margin-left: 5px; vertical-align: middle;
+    border: 1px solid var(--border); background: none; color: var(--text-faint); font-size: 9px;
+    cursor: pointer; padding: 0; font: inherit; line-height: 1;
+  }
+  .so-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .so-toggle.is-open { background: var(--surface-2); color: var(--accent); border-color: var(--accent); }
+  .li-tag { font-size: 9px; color: var(--text-faint); background: var(--surface); border: 1px solid var(--border-soft); border-radius: 4px; padding: 0 4px; margin-left: 5px; white-space: nowrap; }
+
+  /* Floating card — position:fixed + JS-computed coords means it renders
+     above the table's own scroll container instead of being wedged inside a
+     narrow column cell, and getBoundingClientRect()/fixed positioning are
+     both viewport-relative, so no scroll-offset math is needed. */
+  .so-popover {
+    position: fixed; display: none; width: 480px; max-width: calc(100vw - 32px);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    box-shadow: 0 4px 8px rgba(20,23,28,0.06), 0 24px 48px -16px rgba(20,23,28,0.22);
+    z-index: 40; overflow: hidden;
+  }
+  .so-popover.show { display: block; }
+  .so-pop-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border-soft); background: var(--surface-2); }
+  .so-pop-title { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+  .so-pop-title .label { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); font-weight: 700; white-space: nowrap; }
+  .so-pop-link { font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 13px; color: var(--text); text-decoration: none; border-bottom: 1px dashed var(--border); display: inline-flex; align-items: center; gap: 4px; }
+  .so-pop-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .so-pop-link .ext-icon { width: 10px; height: 10px; opacity: 0.7; }
+  .so-pop-close { width: 22px; height: 22px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; color: var(--text-faint); border-radius: 6px; cursor: pointer; font-size: 15px; line-height: 1; padding: 0; }
+  .so-pop-close:hover { background: var(--border-soft); color: var(--text); }
+  .so-dates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--border-soft); }
+  .so-date-tile { background: var(--surface-2); border: 1px solid var(--border-soft); border-radius: 10px; padding: 8px 12px; }
+  .so-date-tile .k { font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-faint); font-weight: 700; margin-bottom: 4px; }
+  .so-date-tile .v { font-size: 13px; font-weight: 600; color: var(--text); }
+  .so-date-tile .v.unset { color: var(--text-faint); font-weight: 500; font-size: 11.5px; }
+  .so-date-tile.ship .v:not(.unset) { color: var(--info); }
+  .so-date-tile.install .v:not(.unset) { color: var(--accent); }
+  .so-pop-parts { max-height: 260px; overflow-y: auto; }
+  .li-loading, .li-empty { font-size: 11px; color: var(--text-faint); padding: 10px 16px; }
+  table.li-table { width: 100%; min-width: 0; table-layout: fixed; border-collapse: collapse; font-size: 12px; }
+  .li-table th { text-align: left; padding: 8px 12px; font-size: 9.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-faint); font-weight: 700; background: var(--surface); border-bottom: 1px solid var(--border); }
+  .li-table td { padding: 8px 12px; border-bottom: 1px solid var(--border-soft); vertical-align: middle; overflow-wrap: break-word; }
+  .li-table tr:last-child td { border-bottom: none; }
+  .li-table tr.is-pending { background: color-mix(in srgb, var(--warning-soft) 55%, transparent); }
+  .li-table td.li-part { font-family: "IBM Plex Mono", monospace; font-weight: 600; }
+  .li-table td.li-desc { color: var(--text-dim); font-size: 11.5px; }
+  .li-table td.li-qty { font-family: "IBM Plex Mono", monospace; text-align: right; }
+  .li-table td.li-status { text-align: right; }
+  .li-table .badge { white-space: normal; text-align: center; padding: 2px 7px; }
+  .so-pop-foot { padding: 9px 16px; font-size: 10.5px; color: var(--text-faint); background: var(--surface-2); border-top: 1px solid var(--border-soft); }
+
+  /* ---------- skeleton ---------- */
+  .skel { position: relative; overflow: hidden; background: var(--surface-2); border-radius: 6px; }
+  .skel::after {
+    content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--text) 6%, transparent), transparent);
+    animation: shimmer 1.4s infinite;
+  }
+  @media (prefers-reduced-motion: reduce) { .skel::after { animation: none; } }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+
+  footer.foot {
+    margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    font-size: 11px; color: var(--text-faint); line-height: 1.6;
+  }
+  footer.foot a { color: var(--text-faint); }
+  footer.foot code { font-family: "IBM Plex Mono", monospace; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+
+  @media (max-width: 980px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    header.top { flex-direction: column; }
+    .status-cluster { align-items: flex-start; }
+  }
+
+
+  /* ---------- Command Center additions: SA Start / WO SOW columns ---------- */
+  td.sa-start { white-space: nowrap; font-size: 12px; }
+  td.sa-start .sa-tag { font-size: 9.5px; color: var(--text-faint); margin-left: 4px; text-transform: uppercase; letter-spacing: .04em; }
+  td.wo-sow { min-width: 220px; max-width: 320px; font-size: 11.5px; color: var(--text-dim); line-height: 1.4; }
+  td.wo-sow .sow-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* ---------- Command Center additions: Top-parts drill-down ---------- */
+  .mini-row.is-clickable { cursor: pointer; border-radius: 6px; }
+  .mini-row.is-clickable:hover .mini-label { color: var(--accent); text-decoration: underline; }
+  .parts-link { background: none; border: none; color: var(--accent); font: inherit; font-size: 11.5px; font-weight: 500; cursor: pointer; padding: 0; }
+  .parts-link:hover { text-decoration: underline; }
+  .pd-overlay { position: fixed; inset: 0; background: rgba(10,12,15,.55); z-index: 60; display: none; align-items: flex-start; justify-content: center; padding: 4vh 16px; overflow: auto; }
+  .pd-overlay.show { display: flex; }
+  .pd-card { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 24px 60px -16px rgba(0,0,0,.45); width: min(1240px, 100%); max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; }
+  .pd-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 16px 20px 12px; border-bottom: 1px solid var(--border-soft); }
+  .pd-title { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 17px; margin: 0 0 3px; }
+  .pd-sub { font-size: 11.5px; color: var(--text-faint); line-height: 1.5; }
+  .pd-close { background: transparent; border: none; color: var(--text-faint); font-size: 22px; line-height: 1; cursor: pointer; border-radius: 6px; padding: 2px 8px; }
+  .pd-close:hover { background: var(--surface-2); color: var(--text); }
+  .pd-controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 20px; border-bottom: 1px solid var(--border-soft); background: var(--surface-2); font-size: 12px; color: var(--text-dim); }
+  .pd-controls select { background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 7px; padding: 5px 8px; font: inherit; font-size: 12px; max-width: 420px; }
+  .pd-controls label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .pd-body { overflow: auto; }
+  .pd-body table { min-width: 1080px; }
+  .pd-body td.pd-part { font-family: "IBM Plex Mono", monospace; font-weight: 600; white-space: nowrap; }
+  .pd-body td.pd-desc { color: var(--text-dim); min-width: 220px; }
+  .pd-body tr.pd-first td { border-top: 2px solid var(--border); }
+  .pd-body td.pd-num { text-align: right; font-family: "IBM Plex Mono", monospace; }
+  .pd-body tr.is-pending td.pd-pend { color: var(--warning); font-weight: 700; }
+  .pd-empty { padding: 28px 20px; color: var(--text-faint); font-size: 13px; text-align: center; }
+
+  /* ---------- Command Center additions: Pending-parts HTML report button lives under the table ---------- */
+  .table-foot-actions { display: flex; justify-content: flex-end; margin-top: 12px; }
+
+  /* ---------- Export menu ---------- */
+  .export-menu { position: relative; }
+  .export-menu > summary {
+    list-style: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    font-family: "IBM Plex Sans", sans-serif; font-size: 12px; font-weight: 500;
+    padding: 6px 11px; border-radius: 7px;
+  }
+  .export-menu > summary::-webkit-details-marker { display: none; }
+  .export-menu > summary:hover { border-color: var(--accent); color: var(--accent); }
+  .export-menu > summary svg { width: 13px; height: 13px; }
+  .export-menu[open] > summary { border-color: var(--accent); color: var(--accent); }
+  .export-menu.is-disabled { pointer-events: none; opacity: 0.45; }
+  button.refresh-btn.is-disabled { pointer-events: none; opacity: 0.45; }
+  .export-panel {
+    position: absolute; top: calc(100% + 6px); right: 0; z-index: 20;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    box-shadow: var(--shadow); padding: 6px; min-width: 220px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .export-panel button {
+    display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+    background: none; border: none; color: var(--text);
+    font-family: "IBM Plex Sans", sans-serif; font-size: 12.5px;
+    padding: 8px 9px; border-radius: 6px; cursor: pointer;
+  }
+  .export-panel button:hover { background: var(--surface-2); color: var(--accent); }
+  .export-panel button svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--text-faint); }
+  .export-panel .export-hint { font-size: 10.5px; color: var(--text-faint); padding: 3px 9px 4px; line-height: 1.4; }
+  .snapshot-banner {
+    background: var(--info-soft); color: var(--info); border: 1px solid color-mix(in srgb, var(--info) 35%, transparent);
+    border-radius: 10px; padding: 10px 14px; font-size: 12.5px; line-height: 1.5; margin-bottom: 20px;
+  }
+  .snapshot-filter-note { font-size: 11.5px; color: var(--text-faint); margin-bottom: 10px; }
+
+  /* ---------- Print / PDF export ----------
+     The artifact viewer itself never opens a print dialog (window.print() is
+     a no-op there), so this rule doesn't fire in-app — it applies when a
+     viewer opens the downloaded HTML snapshot in their own browser and prints
+     it from there (Ctrl/Cmd+P → Save as PDF). Forces a light, ink-friendly
+     palette regardless of on-screen theme, and hides anything only meaningful
+     live (refresh, export menu, search/filter controls, sort arrows, per-row
+     SOINC dropdowns). Kept as the LAST rule in the sheet so it wins over the
+     dark-mode blocks above. */
+  @media print {
+    :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+      --bg: #ffffff; --surface: #ffffff; --surface-2: #f3f4f6;
+      --border: #cfd3d9; --border-soft: #e2e5e9;
+      --text: #14171c; --text-dim: #444b55; --text-faint: #6b7280;
+      --accent: #cf4a15; --accent-strong: #b33e10; --accent-soft: #fde7db;
+      --critical: #c0392b; --critical-soft: #fbe1dd;
+      --warning: #a3630a; --warning-soft: #fbeed8;
+      --good: #1f7a4d; --good-soft: #dff3e8;
+      --info: #1d6fa5; --info-soft: #dcedf8;
+      --shadow: none;
+      color-scheme: light;
+    }
+    body { background: #fff; }
+    .refresh-row, .banner, .export-menu, .search-box, .chip-row, #agn-pendingPartsBtn, #agn-woCompletedBtn, #agn-sheetsExportBtn,
+    th button .arrow, .so-toggle, .so-popover, .wo-more, .skel::after { display: none !important; }
+    th button { pointer-events: none; }
+    .wrap { max-width: 100%; padding: 0; }
+    .panel, .kpi { box-shadow: none; border: 1px solid var(--border); break-inside: avoid; }
+    .main-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    .table-scroll { overflow: visible; border: none; }
+    thead th { position: static; }
+    a.rec-link .ext-icon { display: none; }
+    .live-pill { border: 1px solid var(--border); }
+    .live-pill .dot { animation: none !important; box-shadow: none !important; }
+  }.wcr-wrap{max-width:1100px;margin:0 auto;padding:28px 28px 64px;}.wcr-banner{background:var(--info-soft);color:var(--info);border:1px solid color-mix(in srgb, var(--info) 35%, transparent);border-radius:10px;padding:10px 14px;font-size:12.5px;line-height:1.5;margin-bottom:20px;}.wcr-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px;}.wcr-stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);}.wcr-stat .label{font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);font-weight:600;margin-bottom:8px;}.wcr-stat .value{font-size:23px;font-weight:600;line-height:1;}.wcr-stat .value.warning{color:var(--warning);} .wcr-stat .value.critical{color:var(--critical);} .wcr-stat .value.good{color:var(--good);}.wcr-case{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;}.wcr-case-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;padding:14px 18px;}.wcr-case-head-left{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;min-width:0;max-width:100%;}.wcr-account{font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;overflow-wrap:anywhere;}.wcr-case-head-right{display:flex;align-items:center;gap:18px;flex-wrap:wrap;min-width:0;max-width:100%;}.wcr-kv{display:flex;flex-direction:column;gap:2px;min-width:0;max-width:260px;}.wcr-kv .k{font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);font-weight:600;}.wcr-kv .v{font-size:12.5px;font-weight:500;color:var(--text);overflow-wrap:anywhere;}.wcr-kv .v.age{font-family:'IBM Plex Mono',monospace;font-weight:600;}.wcr-notes{padding:12px 18px;border-top:1px solid var(--border-soft);font-size:12px;color:var(--text-dim);line-height:1.5;background:var(--surface-2);}.wcr-notes .k{font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-faint);font-weight:700;display:block;margin-bottom:4px;}.wcr-empty{padding:12px 18px;font-size:12px;color:var(--text-faint);}.wcr-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-size:11px;color:var(--text-faint);line-height:1.6;}.wcr-foot code{font-family:'IBM Plex Mono',monospace;background:var(--surface-2);padding:1px 5px;border-radius:4px;}@media (max-width:700px){.wcr-stat-grid{grid-template-columns:repeat(2,1fr);}.wcr-case-head{flex-direction:column;align-items:flex-start;}}</style></head><body><div class="wcr-wrap"><div class="wcr-banner">Cases whose primary Work Order has SA Status = <strong style="color:var(--text)">Completed</strong> but the case itself is still open — ready to review the work order's notes and resolve the case if the fix held. Generated 10/26/2026, 12:26:23 PM — static snapshot, does not update itself.</div><div class="wcr-stat-grid"><div class="wcr-stat"><div class="label">Cases — WO Completed</div><div class="value good">7</div></div><div class="wcr-stat"><div class="label">Distinct Accounts</div><div class="value">7</div></div><div class="wcr-stat"><div class="label">Avg Age</div><div class="value">49 <span style="font-size:13px;font-weight:500;color:var(--text-faint)">days</span></div></div><div class="wcr-stat"><div class="label">Oldest Case</div><div class="value critical">96 <span style="font-size:13px;font-weight:500;color:var(--text-faint)">days</span></div></div></div><div class="wcr-case"><div class="wcr-case-head"><div class="wcr-case-head-left"><span class="wcr-account">Steves Chevrolet of Oakdale</span><span class="case-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/Case/500Tc00000kdP47IAE/view" target="_blank" rel="noopener noreferrer">Case #00035809<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-case-head-right"><div class="wcr-kv"><span class="k">Priority</span><span class="v"><span class="badge neutral">Sev 3</span></span></div><div class="wcr-kv"><span class="k">SA Status</span><span class="v"><span class="badge good">Completed</span></span></div><div class="wcr-kv"><span class="k">WO Severity</span><span class="v"><span class="badge neutral" title="Work order severity">Sev 3</span></span></div><div class="wcr-kv"><span class="k">Age</span><span class="v age">96 days</span></div><div class="wcr-kv"><span class="k">Sub-status</span><span class="v">Waiting for Work Order Completion</span></div><div class="wcr-kv"><span class="k">Owner</span><span class="v">Matt Boyd-Brown</span></div><div class="wcr-kv"><span class="k">Work Order</span><span class="v"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/WorkOrder/0WOTc00000I5ZPNOA3/view" target="_blank" rel="noopener noreferrer">00002711<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-kv"><span class="k">Sales Order</span><span class="v"><a class="rec-link" href="https://6747519.app.netsuite.com/app/accounting/transactions/salesord.nl?id=339802" target="_blank" rel="noopener noreferrer">SOINC3531<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div></div></div><div class="wcr-notes"><span class="k">Work Order SOW / Notes</span>Upgrade to SVL Flashes Jeff Steves Owner, Sales Executive, President jeff@steveschevrolet.com (209) 847-2261</div></div><div class="wcr-case"><div class="wcr-case-head"><div class="wcr-case-head-left"><span class="wcr-account">Weirs Buick GMC</span><span class="case-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/Case/500Tc00000lPS9JIAW/view" target="_blank" rel="noopener noreferrer">Case #00036861<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-case-head-right"><div class="wcr-kv"><span class="k">Priority</span><span class="v"><span class="badge neutral">Sev 3</span></span></div><div class="wcr-kv"><span class="k">SA Status</span><span class="v"><span class="badge good">Completed</span></span></div><div class="wcr-kv"><span class="k">WO Severity</span><span class="v"><span class="badge crit" title="Work order severity">Sev 1</span></span></div><div class="wcr-kv"><span class="k">Age</span><span class="v age">79 days</span></div><div class="wcr-kv"><span class="k">Sub-status</span><span class="v">Waiting For Quote Approval</span></div><div class="wcr-kv"><span class="k">Owner</span><span class="v">Matt Boyd-Brown</span></div><div class="wcr-kv"><span class="k">Work Order</span><span class="v"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/WorkOrder/0WOTc00000JcsqrOAB/view" target="_blank" rel="noopener noreferrer">00003579<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-kv"><span class="k">Sales Order</span><span class="v"><a class="rec-link" href="https://6747519.app.netsuite.com/app/accounting/transactions/salesord.nl?id=361167" target="_blank" rel="noopener noreferrer">SOINC3878<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div></div></div></div><div class="wcr-case"><div class="wcr-case-head"><div class="wcr-case-head-left"><span class="wcr-account">Hertz - HNL</span><span class="case-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/Case/500Tc00000liV8MIAU/view" target="_blank" rel="noopener noreferrer">Case #00037336<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-case-head-right"><div class="wcr-kv"><span class="k">Priority</span><span class="v"><span class="badge good">Sev 5</span></span></div><div class="wcr-kv"><span class="k">SA Status</span><span class="v"><span class="badge good">Completed</span></span></div><div class="wcr-kv"><span class="k">WO Severity</span><span class="v"><span class="badge neutral" title="Work order severity">Sev 3</span></span></div><div class="wcr-kv"><span class="k">Age</span><span class="v age">72 days</span></div><div class="wcr-kv"><span class="k">Sub-status</span><span class="v">Waiting for Work Order Completion</span></div><div class="wcr-kv"><span class="k">Owner</span><span class="v">Ben Dennis</span></div><div class="wcr-kv"><span class="k">Work Order</span><span class="v"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/WorkOrder/0WOTc00000JTTmrOAH/view" target="_blank" rel="noopener noreferrer">00003491<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-kv"><span class="k">Sales Order</span><span class="v"><a class="rec-link" href="https://6747519.app.netsuite.com/app/accounting/transactions/salesord.nl?id=341284" target="_blank" rel="noopener noreferrer">SOINC3553<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div></div></div><div class="wcr-notes"><span class="k">Work Order SOW / Notes</span>Replace Right Main and OCR. Parts with Chuck Chuck Kamikawa General Manager ckamikawa@hertz.com</div></div><div class="wcr-case"><div class="wcr-case-head"><div class="wcr-case-head-left"><span class="wcr-account">Amazon Logistics, Inc.-DII3</span><span class="case-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/Case/500Tc00000mq8nRIAQ/view" target="_blank" rel="noopener noreferrer">Case #00038870<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-case-head-right"><div class="wcr-kv"><span class="k">Priority</span><span class="v"><span class="badge neutral">Sev 3</span></span></div><div class="wcr-kv"><span class="k">SA Status</span><span class="v"><span class="badge good">Completed</span></span></div><div class="wcr-kv"><span class="k">WO Severity</span><span class="v"><span class="badge warn" title="Work order severity">Sev 2</span></span></div><div class="wcr-kv"><span class="k">Age</span><span class="v age">47 days</span></div><div class="wcr-kv"><span class="k">Sub-status</span><span class="v">Waiting for Validation Scans</span></div><div class="wcr-kv"><span class="k">Owner</span><span class="v">Brandon Fink</span></div><div class="wcr-kv"><span class="k">Work Order</span><span class="v"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/WorkOrder/0WOTc00000KQFkfOAH/view" target="_blank" rel="noopener noreferrer">00004021<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-kv"><span class="k">Sales Order</span><span class="v"><span class="dim-dash">—</span></span></div></div></div><div class="wcr-notes"><span class="k">Work Order SOW / Notes</span>-Replace THREE Burnt OCR Flashes with Profoto Flash. - Run Sanity Scans after you Profoto Flashes are installed. Flashes have been picked up already and left by the AVI system POC- Josh Middleton Phone # 530-957-0502 Secondary POC - Greg Donato Phone # 407-749-8627 Please follow up with Tier 2 support before leaving site. Need to verify sanity scans.</div></div><div class="wcr-case"><div class="wcr-case-head"><div class="wcr-case-head-left"><span class="wcr-account">Hertz - DAL (Hertz)</span><span class="case-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/Case/500Tc00000oKeJ4IAK/view" target="_blank" rel="noopener noreferrer">Case #00041058<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-case-head-right"><div class="wcr-kv"><span class="k">Priority</span><span class="v"><span class="badge neutral">Sev 3</span></span></div><div class="wcr-kv"><span class="k">SA Status</span><span class="v"><span class="badge good">Completed</span></span></div><div class="wcr-kv"><span class="k">WO Severity</span><span class="v"><span class="badge warn" title="Work order severity">Sev 2</span></span></div><div class="wcr-kv"><span class="k">Age</span><span class="v age">17 days</span></div><div class="wcr-kv"><span class="k">Sub-status</span><span class="v">Waiting for Work Order Completion</span></div><div class="wcr-kv"><span class="k">Owner</span><span class="v">Ben Dennis</span></div><div class="wcr-kv"><span class="k">Work Order</span><span class="v"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/WorkOrder/0WOTc00000KALsTOAX/view" target="_blank" rel="noopener noreferrer">00003905<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-kv"><span class="k">Sales Order</span><span class="v"><span class="dim-dash">—</span></span></div></div></div><div class="wcr-notes"><span class="k">Work Order SOW / Notes</span>Please realign and clean exit sensors on drop-off lane. Confirm with tier 2 prior to checkout</div></div><div class="wcr-case"><div class="wcr-case-head"><div class="wcr-case-head-left"><span class="wcr-account">Tom Wood Nissan</span><span class="case-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/Case/500Tc00000oPrKaIAK/view" target="_blank" rel="noopener noreferrer">Case #00041181<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-case-head-right"><div class="wcr-kv"><span class="k">Priority</span><span class="v"><span class="badge crit">Sev 1</span></span></div><div class="wcr-kv"><span class="k">SA Status</span><span class="v"><span class="badge good">Completed</span></span></div><div class="wcr-kv"><span class="k">WO Severity</span><span class="v"><span class="badge neutral" title="Work order severity">Sev 3</span></span></div><div class="wcr-kv"><span class="k">Age</span><span class="v age">16 days</span></div><div class="wcr-kv"><span class="k">Sub-status</span><span class="v">Waiting for Work Order Completion</span></div><div class="wcr-kv"><span class="k">Owner</span><span class="v">Melvin Matias</span></div><div class="wcr-kv"><span class="k">Work Order</span><span class="v"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/WorkOrder/0WOTc00000KOEBCOA5/view" target="_blank" rel="noopener noreferrer">00004018<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-kv"><span class="k">Sales Order</span><span class="v"><span class="dim-dash">—</span></span></div></div></div></div><div class="wcr-case"><div class="wcr-case-head"><div class="wcr-case-head-left"><span class="wcr-account">Amazon Logistics, Inc.-DTN7</span><span class="case-num" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-faint);"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/Case/500Tc00000oQuJVIA0/view" target="_blank" rel="noopener noreferrer">Case #00041202<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-case-head-right"><div class="wcr-kv"><span class="k">Priority</span><span class="v"><span class="badge neutral">Sev 3</span></span></div><div class="wcr-kv"><span class="k">SA Status</span><span class="v"><span class="badge good">Completed</span></span></div><div class="wcr-kv"><span class="k">WO Severity</span><span class="v"><span class="badge neutral" title="Work order severity">Sev 3</span></span></div><div class="wcr-kv"><span class="k">Age</span><span class="v age">15 days</span></div><div class="wcr-kv"><span class="k">Sub-status</span><span class="v">Waiting for Work Order Completion</span></div><div class="wcr-kv"><span class="k">Owner</span><span class="v">Lamberto Guzman</span></div><div class="wcr-kv"><span class="k">Work Order</span><span class="v"><a class="rec-link" href="https://uveye.lightning.force.com/lightning/r/WorkOrder/0WOTc00000KAc26OAD/view" target="_blank" rel="noopener noreferrer">00003913<svg class="ext-icon" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4.5 2h5.5v5.5M9.7 2.3 2.3 9.7"/></svg></a></span></div><div class="wcr-kv"><span class="k">Sales Order</span><span class="v"><span class="dim-dash">—</span></span></div></div></div><div class="wcr-notes"><span class="k">Work Order SOW / Notes</span>Adjust Atlas exit triggers. Check/clean the cooling rack air filter Emily Scott Operations Manager emiscot@amazon.com</div></div><div class="wcr-foot">Case # and Work Order # link out to Salesforce; Sales Order # links to NetSuite when resolved. The Work Order shown is each case's primary work order — the same open-over-completed selection logic used by the main table's Work Order column — so when it shows Completed here, that genuinely is the case's most relevant work order, not an older one masked by a newer open one. "Work Order SOW / Notes" (when present) is the same free-text field shown in the main table's WO SOW column.</div></div></body></html>
